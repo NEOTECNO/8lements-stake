@@ -53,7 +53,7 @@ const approve = async (e)=> {
 				document.getElementById("connect_button").innerHTML = account.substr(0,10) + "..." + account.substr(-4);
   
 				const web3 = new Web3(window.ethereum);
-				contract1 = new web3.eth.Contract(ABI_COL, CONTRACT_COL, { from: account });
+				contract1 = new web3.eth.Contract(ABI_COL, CONTRACT_COL, {gas: 100000});
 				approved = await contract1.methods.isApprovedForAll(account, CONTRACT_STAKE).call();
 
 				if (approved) {
